@@ -25,7 +25,7 @@ public class Sales {
         return salesId;
     }
     public String getAll(){
-        return salesId+" "+dateTime+" "+carPlate+" "+custId+" "+employeeId;
+        return "Sales ID : "+salesId+"Date & Time : "+dateTime+"Car Plate : "+carPlate+"Customer ID : "+custId+"Employee ID : "+employeeId;
     }
     public boolean filterSales(String search){
         if(custId.equals(search)||salesId.equals(search)||employeeId.equals(search)||carPlate.equals(search))
