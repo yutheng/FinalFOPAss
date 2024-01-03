@@ -1,14 +1,16 @@
 public class Employee {
     private String employeeId;
     private String employeeName;
-    private int employeeStatus; // 0 for sales employee, 1 for management employee
+    private String employeeStatus; // 0 for sales employee, 1 for management employee
     private String password;
+    public static int record;
     
     public Employee(String employeeId, String employeeName, int employeeStatus, String password) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
         this.employeeStatus = employeeStatus;
         this.password = password;
+        record++;
     }
 
     // Getter for employeeId
@@ -49,5 +51,14 @@ public class Employee {
     // Setter for password
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String getAll(){
+        return "Employee ID : "+employeeId+"Employee Name : "+employeeName+"Employee Status : "+employeeStatus+"Password : "+password;
+    }
+    public boolean filterEmployee(String search){
+        if(employeeId.equals(search)||employeeName.equals(search)||password.equals(search)||employeeStatus.equals(search))
+            return true;
+        else
+            return false;
     }
 }
