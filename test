@@ -135,7 +135,15 @@ public class Company {
         while (true) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("\nLogged In Actions:");
-            System.out.println("1. Profit Margin\n2. Import Data\n3. Add Employee\n4. Logout");
+            System.out.println("1. Profit Margin\n
+                                2. Import Data\n
+                                3. Add Employee\n
+                                4. View Customer Data\n
+                                5. View Employee Data\n
+                                6. View Vehicle Data\n
+                                7. View Sales Record\n
+                                8. Log Out\n
+                                ");
             System.out.print("Enter your choice: ");
             String choice = scanner.nextLine();
 
@@ -161,8 +169,26 @@ public class Company {
                     addManagement();
                     break;
                 case "4":
-                    System.out.println("Logging out.");
+                    ViewInfo.displayAllCustomerData();
+                    break;
+
+                case "5":
+                    ViewInfo.displayAllEmployeeData();
+                    break;
+
+                case "6":
+                    ViewInfo.displayAllVehicleData();
+                    break;
+
+                case "7":
+                    ViewInfo.displayAllSalesRecords();
+                    break;
+
+                case "8":
+                    System.out.println("Logging Out...");
                     return;
+                
+
 
                 default:
                     System.out.println("Invalid choice. Please try again.");
