@@ -25,7 +25,7 @@ public class Vehicle {
         return salesPrice;
     }
     public String getAll(){
-        return carPlate+" "+carModel+" "+acquirePrice+" "+carStatus+" "+salesPrice;
+        return "Car Plate : "+carPlate+"Car Model : "+carModel+"Acquire Price : "+acquirePrice+"Car Status : "+carStatus+"Sales Price : "+salesPrice;
     }
     public boolean filterVehicle(String search){
         if(carPlate.equals(search)||carModel.equals(search)||carStatus.equals(search))
