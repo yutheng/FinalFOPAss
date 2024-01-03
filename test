@@ -9,6 +9,7 @@ import java.util.Random;
 import java.util.Scanner;
 public class Company {
     ProfitMargin profitMargin = new ProfitMargin();
+    private String username;
     public static Customer [] c;
     public static Employee [] e;
     public static Sales [] s;
@@ -72,6 +73,7 @@ public class Company {
     }
 
     public void login(String username, String password) {
+        this.username=username;
         String line = "";
         String[] row = null;
         try {
@@ -133,6 +135,7 @@ public class Company {
     
     private void performLoggedInActions1() {
         while (true) {
+            String []selection=new String[4];
             Scanner scanner = new Scanner(System.in);
             System.out.println("\nLogged In Actions:");
             System.out.println("1. Profit Margin\n
@@ -142,10 +145,11 @@ public class Company {
                                 5. View Employee Data\n
                                 6. View Vehicle Data\n
                                 7. View Sales Record\n
-                                8. Log Out\n
+                                8. Search By Keyword
+                                9. Log Out\n
                                 ");
             System.out.print("Enter your choice: ");
-            String choice = scanner.nextLine();
+            String choice = scanner.next();
 
             switch (choice) {
                 case "1":
@@ -165,6 +169,7 @@ public class Company {
                     System.out.println("Import data done.");
                     break;
                 case "3":
+                    if(!selection[1].equals("1");
                     e=importEmployee("1");
                     addManagement();
                     break;
@@ -183,8 +188,18 @@ public class Company {
                 case "7":
                     ViewInfo.displayAllSalesRecords();
                     break;
-
                 case "8":
+                    if(!selection[0].equals("1"))
+                        c= importCustomer("1");
+                    if(!selection[1].equals("1"))
+                        e=importEmployee("1");
+                    if(!selection[2].equals("1"))
+                        s=importSales("1");
+                    if(!selection[3].equals("1"))
+                        v=importVehicle("1");
+                    filterForSalesLevel(Company.c,Company.s,username);
+                    break;
+                case "9":
                     System.out.println("Logging Out...");
                     return;
                 
@@ -312,3 +327,4 @@ public class Company {
         e[Employee.record]=new Employee(eid,name,Integer.toString(status),pass);
         }
 }
+    
