@@ -126,13 +126,12 @@ public class Company {
         while (true) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("\nLogged In Actions:");
-            System.out.println("1. Perform Action\n2. Import Data\n3. Add Employee\n4. Logout");
+            System.out.println("1. Profit Margin\n2. Import Data\n3. Add Employee\n4. Logout");
             System.out.print("Enter your choice: ");
             String choice = scanner.nextLine();
 
             switch (choice) {
                 case "1":
-                    System.out.println("\nPerforming action...");
                     System.out.print("Year of profit margin: ");
                     String year = scanner.next();
                     profitMargin.calculator(year);
