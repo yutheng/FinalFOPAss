@@ -103,16 +103,25 @@ public class Company {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("\nLogged In Actions:");
-            System.out.println("1. Perform Action\n2. Logout");
+            System.out.println("1. View All Vehicle Data\n2. View Sales Record\n3. View Customer Data\n4. Log Out");
             System.out.print("Enter your choice: ");
             String choice = scanner.nextLine();
 
             switch (choice) {
                 case "1":
                     System.out.println("\nPerforming action...");
+                    ViewInfo.displayAllVehicleData();
+                    break;
+                case "2":
+                    System.out.println("\nPerforming action...");
+                    ViewInfo.displayOwnSalesRecords(username);
+                    break;
+                case "3":
+                    System.out.println("\nPerforming action...");
+                    ViewInfo.displayOwnCustomerData(username);
                     break;
 
-                case "2":
+                case "4":
                     System.out.println("Logging out.");
                     return;
 
