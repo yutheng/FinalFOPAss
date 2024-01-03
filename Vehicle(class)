@@ -1,0 +1,50 @@
+public class Vehicle {
+    public static int record;
+    private String carPlate,carModel,acquirePrice,salesPrice,carStatus;
+    public Vehicle(String carplate,String model,String aprice,String status,String sprice){
+        carPlate=carplate;
+        carModel=model;
+        acquirePrice=aprice;
+        carStatus=status;
+        salesPrice=sprice;
+        record++;
+    }
+    public String getCarPlate(){
+        return carPlate;
+    }
+    public String getCarModel(){
+        return carModel;
+    }
+    public String getAcquirePrice(){
+        return acquirePrice;
+    }
+    public String getCarStatus(){
+        return carStatus;
+    }
+    public String getSalesPrice(){
+        return salesPrice;
+    }
+    public String getAll(){
+        return carPlate+" "+carModel+" "+acquirePrice+" "+carStatus+" "+salesPrice;
+    }
+    public boolean filterVehicle(String search){
+        if(carPlate.equals(search)||carModel.equals(search)||carStatus.equals(search))
+            return true;
+        else
+            return false;
+    }
+    public boolean filterVehicleForLarger(String search,String search2){
+        if((Integer.parseInt(acquirePrice)>=Integer.parseInt(search)&&Integer.parseInt(acquirePrice)<=Integer.parseInt(search2))||
+                (Integer.parseInt(salesPrice)>=Integer.parseInt(search)&&Integer.parseInt(salesPrice)<=Integer.parseInt(search2)))
+            return true;
+        else
+            return false;
+    }
+    public boolean filterVehicleForLess(String search,String search2){
+        if((Integer.parseInt(acquirePrice)<=Integer.parseInt(search)&&Integer.parseInt(acquirePrice)>=Integer.parseInt(search2))||
+                (Integer.parseInt(salesPrice)<=Integer.parseInt(search)&&Integer.parseInt(salesPrice)>=Integer.parseInt(search2)))
+            return true;
+        else
+            return false;
+    }
+}
