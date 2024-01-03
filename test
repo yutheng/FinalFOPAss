@@ -31,7 +31,7 @@ public class Company {
         int cnt = id.length - 1;
         
         try {
-            BufferedReader inputStream = new BufferedReader(new FileReader("C:\\Users\\User\\Downloads\\employee.csv"));
+            BufferedReader inputStream = new BufferedReader(new FileReader("employee.csv"));
             while ((line = inputStream.readLine()) != null){
                 i++;
             }
@@ -63,7 +63,7 @@ public class Company {
     
     public void registerEmployee(String name, String username, String password) {
         try {
-            PrintWriter outputStream = new PrintWriter(new FileOutputStream("C:\\Users\\User\\Downloads\\employee.csv", true));
+            PrintWriter outputStream = new PrintWriter(new FileOutputStream("employee.csv", true));
             outputStream.printf("%s,%s,%s,%s\n", username, name, "0", password);
             outputStream.close();
         }catch (IOException ioe) {
@@ -77,7 +77,7 @@ public class Company {
         String line = "";
         String[] row = null;
         try {
-            BufferedReader inputStream = new BufferedReader(new FileReader("C:\\Users\\User\\Downloads\\employee.csv"));
+            BufferedReader inputStream = new BufferedReader(new FileReader("employee.csv"));
             while ((line = inputStream.readLine()) != null){
                 row = line.split(",");
                 if (row[0].equals(username) && row[3].equals(password)) {
@@ -107,7 +107,7 @@ public class Company {
             System.out.println("\nLogged In Actions:");
             System.out.println("1. View All Vehicle Data\n2. View Sales Record\n3. View Customer Data\n4. Log Out");
             System.out.print("Enter your choice: ");
-            String choice = scanner.nextLine();
+            String choice = scanner.next();
 
             switch (choice) {
                 case "1":
@@ -135,7 +135,7 @@ public class Company {
     
     private void performLoggedInActions1() {
         while (true) {
-            String []selection=new String[4];
+            String []selection={"0","0","0","0"};
             Scanner scanner = new Scanner(System.in);
             System.out.println("\nLogged In Actions:");
             System.out.println("1. Profit Margin\n
