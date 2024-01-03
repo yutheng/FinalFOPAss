@@ -23,7 +23,7 @@ public class Customer {
         return postcode;
     }
     public String getAll(){
-        return custId+" "+custName+" "+phoneNum+" "+postcode;
+        return "Customer ID : "+custId+"Customer Name : "+custName+"Phone Number : "+phoneNum+"Postcode : "+postcode;
     }
     public boolean filterCustomer(String search){
         if(custId.equals(search)||custName.equals(search)||postcode.equals(search)||phoneNum.equals(search))
