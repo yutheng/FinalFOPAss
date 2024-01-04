@@ -1,6 +1,3 @@
-
-import static FinalFOPAss.Company.e;
-import static FinalFOPAss.Company.employeeIDGenerator;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -9,7 +6,7 @@ import java.io.PrintWriter;
 import java.util.Random;
 import java.util.Scanner;
 public class importData{
-    public Customer []importCustomer(String selc){
+    public static Customer []importCustomer(String selc){
             Customer []c=new Customer[9999];
             if(selc.equals("1")){
             try{
@@ -28,7 +25,7 @@ public class importData{
             }
             return c;
     }
-    public Employee[] importEmployee(String selc){
+    public static Employee[] importEmployee(String selc){
         Employee [] e=new Employee[9999];
         if(selc.equals("1")){
         try{
@@ -47,7 +44,7 @@ public class importData{
         }
         return e;
     }
-    public Sales[] importSales(String selc){
+    public static Sales[] importSales(String selc){
         Sales [] s=new Sales[9999];
         if(selc.equals("1")){
         try{
@@ -66,7 +63,7 @@ public class importData{
         }
         return s;
     }
-    public Vehicle[] importVehicle(String selc){
+    public static Vehicle[] importVehicle(String selc){
         Vehicle [] v=new Vehicle[10000];
         if(selc.equals("1")){
         try{
@@ -88,7 +85,7 @@ public class importData{
         }
         return v;
     }
-    public String passwordGenerator(){
+    public static String passwordGenerator(){
          String upper="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
          String lower="abcdefghijklmnopqrstuvwxyz";
          String specialChars="<>.?/{}[]+-_()-*&^%$#@!";
@@ -101,9 +98,9 @@ public class importData{
          }
          return new String (password);
     }
-    public void addManagement(){
+    public static void addManagement(){
         StringBuilder sb=new StringBuilder();
-        String eid=employeeIDGenerator();
+        String eid=Company.employeeIDGenerator();
         sb.append(eid);
         Scanner in=new Scanner(System.in);
         Scanner scanner=new Scanner(System.in);
@@ -123,6 +120,6 @@ public class importData{
             catch(IOException ioe){
                 System.out.printf("ERROR - A %s occurred:\n%s\n",ioe.getClass().toString(),ioe.getMessage());
             }  
-        e[Employee.record]=new Employee(eid,name,Integer.toString(status),pass);
+        Company.e[Employee.record]=new Employee(eid,name,Integer.toString(status),pass);
         }
 }
