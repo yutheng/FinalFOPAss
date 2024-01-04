@@ -1,8 +1,14 @@
 
+import static FinalFOPAss.Company.e;
+import static FinalFOPAss.Company.employeeIDGenerator;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Random;
 import java.util.Scanner;
-public class ImportData{
+public class importData{
     public Customer []importCustomer(String selc){
             Customer []c=new Customer[9999];
             if(selc.equals("1")){
@@ -82,4 +88,41 @@ public class ImportData{
         }
         return v;
     }
+    public String passwordGenerator(){
+         String upper="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+         String lower="abcdefghijklmnopqrstuvwxyz";
+         String specialChars="<>.?/{}[]+-_()-*&^%$#@!";
+         String num="0123456789";
+         String combination=upper+lower+specialChars+num;
+         char [] password=new char [8];
+         Random r=new Random();
+         for (int i=0;i<8;i++){
+            password[i]=combination.charAt(r.nextInt(combination.length()));
+         }
+         return new String (password);
+    }
+    public void addManagement(){
+        StringBuilder sb=new StringBuilder();
+        String eid=employeeIDGenerator();
+        sb.append(eid);
+        Scanner in=new Scanner(System.in);
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("\n--Adding employee--");
+        System.out.println("Please enter name : ");
+        String name=in.nextLine();
+        System.out.println("Please set the employee status (0 for sales level and 1 for management level ) : ");
+        int status=scanner.nextInt();
+        String pass =passwordGenerator();
+        sb.append(","+name+","+status+","+pass);
+            try{
+                PrintWriter pw=new PrintWriter(new FileOutputStream("employee.csv",true));
+                pw.println(sb.toString());
+                pw.close();
+                System.out.println("Employee added.\n");
+            }
+            catch(IOException ioe){
+                System.out.printf("ERROR - A %s occurred:\n%s\n",ioe.getClass().toString(),ioe.getMessage());
+            }  
+        e[Employee.record]=new Employee(eid,name,Integer.toString(status),pass);
+        }
 }
