@@ -105,7 +105,7 @@ public class Company {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("\nLogged In Actions:");
-            System.out.println("1. View All Vehicle Data\n2. View Sales Record\n3. View Customer Data\n4. Log Out");
+            System.out.println("1. View All Vehicle Data\n2. View Sales Record\n3. View Customer Data\n4. Search By Keyword\n5. Log Out");
             System.out.print("Enter your choice: ");
             String choice = scanner.next();
 
@@ -122,8 +122,11 @@ public class Company {
                     System.out.println("\nPerforming action...");
                     ViewInfo.displayOwnCustomerData(username);
                     break;
-
                 case "4":
+                    Filter f=new Filter();
+                    f.filterForSalesLevel(username);
+                    break;
+                case "5":
                     System.out.println("Logging out.");
                     return;
 
@@ -145,8 +148,8 @@ public class Company {
                                 5. View Employee Data\n
                                 6. View Vehicle Data\n
                                 7. View Sales Record\n
-                                8. Search By Keyword
-                                9. Log Out\n
+                                8. Search By Keyword\n
+                                9. Log Out
                                 ");
             System.out.print("Enter your choice: ");
             String choice = scanner.next();
@@ -189,22 +192,12 @@ public class Company {
                     ViewInfo.displayAllSalesRecords();
                     break;
                 case "8":
-                    if(!selection[0].equals("1"))
-                        c= importCustomer("1");
-                    if(!selection[1].equals("1"))
-                        e=importEmployee("1");
-                    if(!selection[2].equals("1"))
-                        s=importSales("1");
-                    if(!selection[3].equals("1"))
-                        v=importVehicle("1");
-                    filterForSalesLevel(Company.c,Company.s,username);
+                    Filter f=new Filter();
+                    f.filterForManagementLevel();
                     break;
                 case "9":
                     System.out.println("Logging Out...");
                     return;
-                
-
-
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
