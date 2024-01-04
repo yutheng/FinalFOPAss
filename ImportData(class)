@@ -1,0 +1,85 @@
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+public class ImportData{
+    public Customer []importCustomer(String selc){
+            Customer []c=new Customer[9999];
+            if(selc.equals("1")){
+            try{
+            Scanner sc=new Scanner(new FileInputStream("cust.csv"));
+            int i=0;
+            while(sc.hasNextLine()){
+                String [] cust=sc.nextLine().split(",");
+                c[i]=new Customer(cust[0],cust[1],cust[2],cust[3]);
+                i++;
+            }
+            sc.close();
+            }
+            catch(FileNotFoundException e){
+            System.out.printf("ERROR - A %s occurred:\n%s\n",e.getClass().toString(),e.getMessage());
+            }
+            }
+            return c;
+    }
+    public Employee[] importEmployee(String selc){
+        Employee [] e=new Employee[9999];
+        if(selc.equals("1")){
+        try{
+            Scanner sc=new Scanner(new FileInputStream("employee.csv"));
+            int i=0;
+            while(sc.hasNextLine()){
+                String [] emp=sc.nextLine().split(",");
+                e[i]=new Employee(emp[0],emp[1],emp[2],emp[3]);
+                i++;
+            }
+            sc.close();
+        }
+        catch(FileNotFoundException fe){
+            System.out.printf("ERROR - A %s occurred:\n%s\n",fe.getClass().toString(),fe.getMessage());
+        }
+        }
+        return e;
+    }
+    public Sales[] importSales(String selc){
+        Sales [] s=new Sales[9999];
+        if(selc.equals("1")){
+        try{
+            Scanner sc=new Scanner(new FileInputStream("sales.csv"));
+            int i=0;
+            while(sc.hasNextLine()){
+                String [] sale=sc.nextLine().split(",");
+                s[i]=new Sales(sale[0],sale[1],sale[2],sale[3],sale[4]);
+                i++;
+            }
+            sc.close();
+        }
+        catch(FileNotFoundException e){
+            System.out.printf("ERROR - A %s occurred:\n%s\n",e.getClass().toString(),e.getMessage());
+        }
+        }
+        return s;
+    }
+    public Vehicle[] importVehicle(String selc){
+        Vehicle [] v=new Vehicle[10000];
+        if(selc.equals("1")){
+        try{
+            Scanner sc=new Scanner(new FileInputStream("vehicle.csv"));
+            int i=0;
+            while(sc.hasNextLine()){
+                String [] vech=sc.nextLine().split(",");
+                if(vech[3].equals("0"))
+                    v[i]=new Vehicle(vech[0],vech[1],vech[2],vech[3],vech[4]);
+                else if(vech[3].equals("1"))
+                    v[i]=new Vehicle(vech[0],vech[1],vech[2],vech[3],null);
+                i++;
+            }
+            sc.close();
+        }
+        catch(FileNotFoundException e){
+            System.out.printf("ERROR - A %s occurred:\n%s\n",e.getClass().toString(),e.getMessage());
+        }
+        }
+        return v;
+    }
+}
