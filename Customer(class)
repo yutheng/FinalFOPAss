@@ -1,5 +1,4 @@
 public class Customer {
-    public static int record;
     private String custId,custName,phoneNum,postcode;
     public Customer(){
     }
@@ -8,7 +7,6 @@ public class Customer {
         custName=name;
         phoneNum=phnum;
         postcode=code;
-        record++;
     }
     public String getCustId(){
         return custId;
@@ -21,14 +19,5 @@ public class Customer {
     }
     public String getPostcode(){
         return postcode;
-    }
-    public String getAll(){
-        return "Customer ID : "+custId+"Customer Name : "+custName+"Phone Number : "+phoneNum+"Postcode : "+postcode;
-    }
-    public boolean filterCustomer(String search){
-        if(custId.equals(search)||custName.equals(search)||postcode.equals(search)||phoneNum.equals(search))
-            return true;
-        else
-            return false;
     }
 }
