@@ -165,18 +165,17 @@ public class Company {
                     System.out.println("\nEnter 1 for importing data [customer/employee/sales/vehicle],four rounds required : ");
                     for(int i=0;i<4;i++)
                         selection[i]=scanner.next();
-                    ImportData im=new ImportData();
-                    c=im.importCustomer(selection[0]);
-                    e=im.importEmployee(selection[1]);
-                    s=im.importSales(selection[2]);
-                    v=im.importVehicle(selection[3]);
+                    c=ImportData.importCustomer(selection[0]);
+                    e=ImportData.importEmployee(selection[1]);
+                    s=ImportData.importSales(selection[2]);
+                    v=ImportData.importVehicle(selection[3]);
                     System.out.println("Import data done.");
                     break;
                 case "3":
                     if(!selection[1].equals("1")){
-                    e=importEmployee("1");
+                    e=ImportData.importEmployee("1");
                     }
-                    addManagement();
+                    ImportData.addManagement();
                     break;
                 case "4":
                     ViewInfo.displayAllCustomerData();
@@ -205,42 +204,5 @@ public class Company {
             }
         }
     }
-    public String passwordGenerator(){
-         String upper="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-         String lower="abcdefghijklmnopqrstuvwxyz";
-         String specialChars="<>.?/{}[]+-_()-*&^%$#@!";
-         String num="0123456789";
-         String combination=upper+lower+specialChars+num;
-         char [] password=new char [8];
-         Random r=new Random();
-         for (int i=0;i<8;i++){
-            password[i]=combination.charAt(r.nextInt(combination.length()));
-         }
-         return new String (password);
-    }
-    public void addManagement(){
-        StringBuilder sb=new StringBuilder();
-        String eid=employeeIDGenerator();
-        sb.append(eid);
-        Scanner in=new Scanner(System.in);
-        Scanner scanner=new Scanner(System.in);
-        System.out.println("\n--Adding employee--");
-        System.out.println("Please enter name : ");
-        String name=in.nextLine();
-        System.out.println("Please set the employee status (0 for sales level and 1 for management level ) : ");
-        int status=scanner.nextInt();
-        String pass =passwordGenerator();
-        sb.append(","+name+","+status+","+pass);
-            try{
-                PrintWriter pw=new PrintWriter(new FileOutputStream("employee.csv",true));
-                pw.println(sb.toString());
-                pw.close();
-                System.out.println("Employee added.");
-            }
-            catch(IOException ioe){
-                System.out.printf("ERROR - A %s occurred:\n%s\n",ioe.getClass().toString(),ioe.getMessage());
-            }  
-        e[Employee.record]=new Employee(eid,name,Integer.toString(status),pass);
-        }
 }
     
